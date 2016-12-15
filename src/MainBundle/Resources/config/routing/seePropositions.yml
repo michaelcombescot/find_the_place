@@ -1,0 +1,11 @@
+main_see_propositions:
+    path:     /
+    defaults: { _controller: MainBundle:Main:seePropositions }
+
+main_see_propositions_valid:
+    path:     /valid/{id}
+    defaults: { _controller: MainBundle:Main:seePropositionsValid }
+
+main_see_propositions_false:
+    path:     /false/{id}
+    defaults: { _controller: MainBundle:Main:seePropositionsFalse }

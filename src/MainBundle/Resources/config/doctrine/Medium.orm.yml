@@ -1,0 +1,22 @@
+MainBundle\Entity\Medium:
+    type: entity
+    table: null
+    repositoryClass: MainBundle\Repository\MediumRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        path:
+            type: string
+            length: 255
+    oneToOne:
+        user:
+            targetEntity: User
+            inversedBy: medium
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

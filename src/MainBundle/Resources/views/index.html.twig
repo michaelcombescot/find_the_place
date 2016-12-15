@@ -1,0 +1,11 @@
+{% extends '@Main/base.html.twig' %}
+
+{% block body %}
+
+{% include 'MainBundle::header.html.twig' %}
+
+<div>
+	<a href="{{ path('fos_user_registration_register') }}">please join us</a>
+</div>
+
+{% endblock %}

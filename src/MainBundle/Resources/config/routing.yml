@@ -1,0 +1,19 @@
+main_medium:
+    resource: "@MainBundle/Resources/config/routing/medium.yml"
+    prefix:   /medium
+
+main_user:
+    resource: "@MainBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+main_homepage:
+    path:     /
+    defaults: { _controller: MainBundle:Main:index }
+
+main_guess:
+    path:     /guess
+    defaults: { _controller: MainBundle:Main:guess }
+
+main_see_propositions:
+    resource: "@MainBundle/Resources/config/routing/seePropositions.yml"
+    prefix:   /seePropositions

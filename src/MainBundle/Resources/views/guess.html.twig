@@ -1,0 +1,15 @@
+{% extends '@Main/base.html.twig' %}
+
+{% block body %}
+
+{% include 'MainBundle::header.html.twig' %}
+
+<div>
+	<p>Hey man I know this place and i can prove it !</p>
+	{{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}

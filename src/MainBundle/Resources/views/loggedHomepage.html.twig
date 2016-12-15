@@ -1,0 +1,41 @@
+{% extends '@Main/base.html.twig' %}
+
+{% block body %}
+
+	{% include 'MainBundle::header.html.twig' %}
+
+	<div id="currentChallenge">
+		<p>Here is the challenge !!</p>
+		<div>
+			<img src="{{ asset(leader.medium.path) }}" alt="challenge">
+		</div>
+		<p>Challenge from {{ leader.username }}</p>
+	</div>
+	{% if isLeader == false %}
+		{% if user.medium == null %}
+			<a href="{{ path('main_guess') }}">
+				<button>
+					I got an idea !
+				</button>
+			</a>
+		{% else %}
+			<div id="myProposition">
+				<img src="{{ asset(user.medium.path) }}" alt="My proposition">
+				<a href="{{ path('medium_edit', {'id': user.medium.id }) }}">
+					<button>
+						change my image
+					</button>
+				</a>
+			</div>
+		{% endif %}
+	{% endif %}
+
+	{% if isLeader %}
+		<a href="{{ path('main_see_propositions') }}">
+			<button>
+				See the propositions
+			</button>
+		</a>
+	{% endif %}
+
+{% endblock %}

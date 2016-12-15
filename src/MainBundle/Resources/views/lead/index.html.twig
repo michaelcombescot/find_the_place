@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Leads list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lead in leads %}
+            <tr>
+                <td><a href="{{ path('lead_show', { 'id': lead.id }) }}">{{ lead.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('lead_show', { 'id': lead.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('lead_edit', { 'id': lead.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lead_new') }}">Create a new lead</a>
+        </li>
+    </ul>
+{% endblock %}

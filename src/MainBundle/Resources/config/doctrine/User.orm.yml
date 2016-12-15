@@ -1,0 +1,21 @@
+MainBundle\Entity\User:
+    type: entity
+    repositoryClass: MainBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        score:
+            type: integer
+            nullable: true
+        lead:
+            type: boolean
+            nullable: true
+    oneToOne:
+        medium:
+            targetEntity: Medium
+            mappedBy: user
+    lifecycleCallbacks: {  }

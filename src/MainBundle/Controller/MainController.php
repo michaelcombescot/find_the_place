@@ -130,6 +130,8 @@ class MainController extends Controller
     	foreach($users as $user)
     	{
     		$user->setReject(false);
+            $em->persist($user);
+            $em->flush($user);
     	}
     	// on efface tous les médias enregistrés jusqu'ici
     	$media = $em->getRepository('MainBundle:Medium')->findAll();

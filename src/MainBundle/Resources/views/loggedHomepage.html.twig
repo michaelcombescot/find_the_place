@@ -6,10 +6,15 @@
 
 	<div id="homepageWrapper">
 
-		{% if leader.medium == null %}
-		
-			{% if isLeader %}
+		<div id="scores">
+			<h3>Current scores</h3>
+			{% for user in users %}
+			    <p>{{ user.username }} : {{ user.score }}</p>
+			{% endfor %}
+		</div>
 
+		{% if leader.medium == null %}
+			{% if isLeader %}
 				<div id="currentChallenge">
 					<p>Time to begin the next match, quick share a picture with your friends !</p>
 					<a href="{{ path('medium_new') }}">
@@ -18,46 +23,41 @@
 						</button>
 					</a>
 				</div>
-			
 			{% else %}
-
 				<div id="currentChallenge">
 					<p>No challenge presently, the new lead is {{ leader.username }}. Now you know who to blame.</p>
 				</div>
-
 			{% endif %}
 		{% else %}
-
 			<div id="currentChallenge">
-				<p>Here is the challenge !!</p>
+				<h3>Here is the challenge !!</h3>
 				<div>
 					<img src="{{ asset(leader.medium.path) }}" alt="challenge">
 				</div>
 				<p>Challenge from {{ leader.username }}</p>
 			</div>
-
 			{% if isLeader == false %}
-
 				{% if user.medium == null %}
-
 					{% if user.reject == true %}
 
 						<div id="myProposition">
 							<p>Your last try has been rejected, play again !</p>
-						</div>
-
-					{% endif %}
-
-					<div id="myProposition">
-						<a href="{{ path('main_guess') }}">
+							<a href="{{ path('main_guess') }}">
 							<button>
-								I got an idea !
+								I got an new idea !
 							</button>
 						</a>
-					</div>
-
+						</div>
+					{% else %}
+						<div id="myProposition">
+							<a href="{{ path('main_guess') }}">
+								<button>
+									I got an idea !
+								</button>
+							</a>
+						</div>
+					{% endif %}
 				{% else %}
-
 					<div id="myProposition">
 						<p>My current proposition</p>
 						<img src="{{ asset(user.medium.path) }}" alt="My proposition">
@@ -67,11 +67,8 @@
 							</button>
 						</a>
 					</div>
-
 				{% endif %}
-
 			{% else %}
-
 				<div id="myProposition">
 					<p>You are the current lead, you can't post new stuff, but you can judge others, and it' pretty cool.</p>
 					<a href="{{ path('main_see_propositions') }}">
@@ -80,11 +77,7 @@
 						</button>
 					</a>
 				</div>
-
 			{% endif %}
-
 		{% endif %}
-
 	</div>
-
 {% endblock %}

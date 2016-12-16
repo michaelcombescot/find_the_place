@@ -25,8 +25,20 @@ class User extends BaseUser
     /**
      * @var int
      */
-    private $score;
+    private $score = 0;
 
+    /**
+     * @var boolean
+     */
+    /**
+     * @var boolean
+     */
+    private $lead = false;
+
+    /**
+     * @var boolean
+     */
+    private $reject = 0;
 
     /**
      * Get id
@@ -87,14 +99,6 @@ class User extends BaseUser
     {
         return $this->medium;
     }
-    /**
-     * @var boolean
-     */
-    /**
-     * @var boolean
-     */
-    private $lead = false;
-
 
     /**
      * Set lead
@@ -118,11 +122,6 @@ class User extends BaseUser
     {
         return $this->lead;
     }
-    /**
-     * @var boolean
-     */
-    private $reject;
-
 
     /**
      * Set reject

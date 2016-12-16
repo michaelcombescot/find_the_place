@@ -7,11 +7,7 @@
 <div id='registerWrapper'>
 	<div id='register'>
 		<p>Join us and play</p>
-		<a href="{{ path('fos_user_registration_register') }}">
-			<button>
-				Join now
-			</button>
-		</a>
+		{% render url('fos_user_registration_register') %}
 	</div>
 </div>
 

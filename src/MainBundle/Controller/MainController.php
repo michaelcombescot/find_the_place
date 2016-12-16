@@ -23,13 +23,17 @@ class MainController extends Controller
     {
 		if($this->isAuthentified($this->getUser()))
 		{
+            $em = $this->getDoctrine()->getManager();
+            $users = $em->getRepository('MainBundle:User')->findAll();
 			$user = $this->getUser();
 			$isLeader = $this->isLead($this->getUser());
 			$leader = $this->leader();
+
 	        return $this->render('MainBundle::loggedHomepage.html.twig', array(
 	        	'isLeader' => $isLeader,
 	        	'leader' => $leader,
 	        	'user' => $user,
+                'users' => $users,
 	        	));
 		}
 	    else

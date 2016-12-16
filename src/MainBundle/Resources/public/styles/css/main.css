@@ -26,6 +26,13 @@ body {
 #registerWrapper #register {
   background-color: #e6e6e6;
   padding: 10px;
+  text-align: center;
+}
+/* line 14, ../sass/_index.scss */
+#registerWrapper #register form > div > div {
+  display: flex;
+  flex_align: column;
+  justify-content: space-between;
 }
 
 /* line 1, ../sass/_homepage.scss */
@@ -36,17 +43,23 @@ body {
   flex-wrap: wrap;
 }
 /* line 8, ../sass/_homepage.scss */
+#homepageWrapper #scores {
+  text-align: center;
+  background-color: #e6e6e6;
+  padding: 10px;
+}
+/* line 15, ../sass/_homepage.scss */
 #homepageWrapper #currentChallenge {
   text-align: center;
   background-color: #e6e6e6;
   padding: 10px;
   max-width: 400px;
 }
-/* line 15, ../sass/_homepage.scss */
+/* line 22, ../sass/_homepage.scss */
 #homepageWrapper #currentChallenge img {
   max-width: 400px;
 }
-/* line 21, ../sass/_homepage.scss */
+/* line 28, ../sass/_homepage.scss */
 #homepageWrapper #myProposition {
   display: flex;
   flex-direction: column;
@@ -56,7 +69,7 @@ body {
   max-width: 400px;
   margin: 10px;
 }
-/* line 31, ../sass/_homepage.scss */
+/* line 38, ../sass/_homepage.scss */
 #homepageWrapper #myProposition img {
   max-width: 400px;
 }

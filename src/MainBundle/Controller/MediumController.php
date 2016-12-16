@@ -39,11 +39,12 @@ class MediumController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $medium->setPath($this->get('file_uploader')->upload($form->get('file')->getData()));
+            $medium->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($medium);
             $em->flush($medium);
 
-            return $this->redirectToRoute('medium_show', array('id' => $medium->getId()));
+            return $this->redirectToRoute('main_homepage', array('id' => $medium->getId()));
         }
 
         return $this->render('MainBundle:medium:new.html.twig', array(
@@ -107,7 +108,7 @@ class MediumController extends Controller
             $em->flush($medium);
         }
 
-        return $this->redirectToRoute('medium_index');
+        return $this->redirectToRoute('main_homepage');
     }
 
     /**

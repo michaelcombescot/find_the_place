@@ -4,8 +4,15 @@
 
 {% include 'MainBundle::header.html.twig' %}
 
-<div>
-	<a href="{{ path('fos_user_registration_register') }}">please join us</a>
+<div id='registerWrapper'>
+	<div id='register'>
+		<p>Join us and play</p>
+		<a href="{{ path('fos_user_registration_register') }}">
+			<button>
+				Join now
+			</button>
+		</a>
+	</div>
 </div>
 
 {% endblock %}

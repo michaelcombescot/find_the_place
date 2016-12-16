@@ -10,12 +10,16 @@ MainBundle\Entity\User:
     fields:
         score:
             type: integer
-            nullable: true
+            nullable: false
         lead:
             type: boolean
-            nullable: true
+            nullable: false
+        reject:
+            type: boolean
+            nullable: false
     oneToOne:
         medium:
             targetEntity: Medium
             mappedBy: user
+            cascade: ['all']
     lifecycleCallbacks: {  }

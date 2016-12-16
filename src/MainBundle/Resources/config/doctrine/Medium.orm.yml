@@ -16,6 +16,7 @@ MainBundle\Entity\Medium:
         user:
             targetEntity: User
             inversedBy: medium
+            cascade: ['persist']
             joinColumn:
                 name: user_id
                 referencedColumnName: id

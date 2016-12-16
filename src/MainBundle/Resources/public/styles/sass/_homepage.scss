@@ -1,0 +1,36 @@
+#homepageWrapper
+{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+
+	#currentChallenge
+	{
+		text-align: center;
+		background-color: #e6e6e6;
+		padding: 10px;
+		max-width: 400px;
+
+		img
+		{
+			max-width: 400px;
+		}
+	}
+
+	#myProposition
+	{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: #e6e6e6;
+		padding: 10px;
+		max-width: 400px;
+		margin:10px;
+
+		img
+		{
+			max-width: 400px;
+		}
+	}
+}

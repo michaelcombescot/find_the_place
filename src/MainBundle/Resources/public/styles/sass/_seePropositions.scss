@@ -1,0 +1,20 @@
+#propositionsWrapper
+{
+	display: flex;
+	align-items: center;
+	padding: 10px;
+
+	#propositions
+	{
+		text-align: center;
+		background-color: #e6e6e6;
+		padding: 10px;
+		max-width: 250px;
+		margin: 10px;
+
+		img
+		{
+			max-width: 200px;
+		}
+	}
+}

@@ -15,6 +15,7 @@ class MainController extends Controller
 	{
         return $this->redirectToRoute('main_homepage');
 	}
+
 	/*
 	* HOMEPAGE
 	*/
@@ -24,15 +25,7 @@ class MainController extends Controller
 		{
 			$user = $this->getUser();
 			$isLeader = $this->isLead($this->getUser());
-			if($isLeader)
-			{
-				$leader = $this->getUser();
-			}
-			else
-			{
-				$em = $this->getDoctrine()->getManager();
-				$leader = $em->getRepository('MainBundle:User')->findOneByLead(true);
-			}
+			$leader = $this->leader();
 	        return $this->render('MainBundle::loggedHomepage.html.twig', array(
 	        	'isLeader' => $isLeader,
 	        	'leader' => $leader,
@@ -53,15 +46,17 @@ class MainController extends Controller
     	$medium = new Medium();
         $form = $this->createForm('MainBundle\Form\MediumType', $medium);
         $form->handleRequest($request);
+        $isLead = $this->isLead($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $medium->setPath($this->get('file_uploader')->upload($form->get('file')->getData()));
             $medium->setUser($this->getUser());
+            $medium->getUser()->setReject(false);
             $em = $this->getDoctrine()->getManager();
             $em->persist($medium);
             $em->flush($medium);
 
-            return $this->redirectToRoute('medium_show', array('id' => $medium->getId()));
+            return $this->redirectToRoute('main_homepage');
         }
 
         return $this->render('MainBundle::guess.html.twig', array(
@@ -75,31 +70,84 @@ class MainController extends Controller
     */
     public function seePropositionsAction()
     {
+    	if($this->getUser()->getLead() == false)
+    	{
+    		return $this->redirectToRoute('main_homepage');
+    	}
+
     	$em = $this->getDoctrine()->getManager();
     	$media = $em->getRepository('MainBundle:Medium')->findAllbut($this->getUser()->getMedium());
+        $nothing = count($media) == 0 ? true : false;
     	return $this->render('MainBundle::seePropositions.html.twig', array(
     		'media' => $media,
+            'nothing' => $nothing,
     		));
     }
 
     public function seePropositionsFalseAction(Medium $medium)
     {
-    	unlink($medium->getPath());
-    	$em = $this->getDoctrine()->getManager();
-    	$em->remove($medium);
+    	if($this->getUser()->getLead() == false)
+    	{
+    		return $this->redirectToRoute('main_homepage');
+    	}
+
+        unlink($medium->getPath());
+        $user = $medium->getUser();
+        $user->setReject(true);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush($user);
+        $em->remove($medium);
         $em->flush($medium);
 
-        return $this->render('MainBundle::seePropositions.html.twig', array(
-    		'propositions' => $propositions,
-    		));
+        return $this->redirectToRoute('main_see_propositions');
     }
 
     public function seePropositionsValidAction(Medium $medium)
     {
-    	
+    	if($this->getUser()->getLead() == false)
+    	{
+    		return $this->redirectToRoute('main_homepage');
+    	}
+
+    	$em = $this->getDoctrine()->getManager();
+    	// passation du leadership
+    	$leader = $this->leader();
+    	$leader->setLead(false);
+    	$em->persist($leader);
+	    $em->flush($leader);
+	    $newLead = $medium->getUser();
+    	$newLead->setLead(true);
+    	$newLead->setScore($newLead->getScore()+1);
+	    $em->persist($newLead);
+	    $em->flush($newLead);
+    	// on reset tous le rejects
+    	$users = $em->getRepository('MainBundle:User')->findAll();
+    	foreach($users as $user)
+    	{
+    		$user->setReject(false);
+    	}
+    	// on efface tous les médias enregistrés jusqu'ici
+    	$media = $em->getRepository('MainBundle:Medium')->findAll();
+    	foreach($media as $medium)
+    	{
+    		unlink($medium->getPath());
+    		// on clean la bdd
+	    	$em->remove($medium);
+	        $em->flush($medium);
+    	}
+        // on retourne à la page d'accueil
+        return $this->redirectToRoute('main_homepage');
     }
 
-    public function isLead($user)
+
+    private function leader()
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	return $em->getRepository('MainBundle:User')->findOneByLead(true);
+    }
+
+    private function isLead($user)
     {
     	if($this->isAuthentified($user))
     		return $user->getLead();
@@ -107,7 +155,7 @@ class MainController extends Controller
     		return false;
     }
 
-    public function isAuthentified($user)
+    private function isAuthentified($user)
     {
     	return $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ? true : false ;
     }

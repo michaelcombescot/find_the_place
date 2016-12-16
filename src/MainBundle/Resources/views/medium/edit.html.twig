@@ -1,31 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends '@Main/base.html.twig' %}
 
 {% block body %}
 
     {% include 'MainBundle::header.html.twig' %}
 
-    <h1>Medium edit</h1>
-    <p>Current Image</p>
-    <img src="{{ asset(medium.path) }}" alt="Current Image">
-    <p>Change to...</p>
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form.file) }}
-        {{ form_errors(edit_form.file) }}
-        <img id="newUpload" src="#" alt="your image"/>
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <a href="{{ path('main_homepage') }}">
+        I tought I had a good idea, but meh. Take me to the homepage.
+    </a>
 
-    <ul>
-        <li>
-            <a href="{{ path('main_homepage') }}">Homepage</a>
-        </li>
-        <li>
+    <div id="editWrapper">
+        <div id="editMedium">
+            <h1>Change my image</h1>
+            <p>Current Image</p>
+            <img src="{{ asset(medium.path) }}" alt="Current Image">
+            <p>Change to...</p>
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form.file) }}
+                {{ form_errors(edit_form.file) }}
+                <img id="newUpload" src="#" alt="your image"/>
+                {{ form_widget(edit_form) }}
+                <input type="submit" value="Edit" />
+            {{ form_end(edit_form) }}
+
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+    </div>
+
 
 {% endblock %}
 

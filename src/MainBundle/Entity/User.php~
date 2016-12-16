@@ -90,4 +90,60 @@ class User extends BaseUser
     /**
      * @var boolean
      */
+    /**
+     * @var boolean
+     */
+    private $lead = false;
+
+
+    /**
+     * Set lead
+     *
+     * @param boolean $lead
+     * @return User
+     */
+    public function setLead($lead)
+    {
+        $this->lead = $lead;
+
+        return $this;
+    }
+
+    /**
+     * Get lead
+     *
+     * @return boolean 
+     */
+    public function getLead()
+    {
+        return $this->lead;
+    }
+    /**
+     * @var boolean
+     */
+    private $reject;
+
+
+    /**
+     * Set reject
+     *
+     * @param boolean $reject
+     * @return User
+     */
+    public function setReject($reject)
+    {
+        $this->reject = $reject;
+
+        return $this;
+    }
+
+    /**
+     * Get reject
+     *
+     * @return boolean 
+     */
+    public function getReject()
+    {
+        return $this->reject;
+    }
 }

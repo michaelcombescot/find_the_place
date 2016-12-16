@@ -118,4 +118,32 @@ class User extends BaseUser
     {
         return $this->lead;
     }
+    /**
+     * @var boolean
+     */
+    private $reject;
+
+
+    /**
+     * Set reject
+     *
+     * @param boolean $reject
+     * @return User
+     */
+    public function setReject($reject)
+    {
+        $this->reject = $reject;
+
+        return $this;
+    }
+
+    /**
+     * Get reject
+     *
+     * @return boolean 
+     */
+    public function getReject()
+    {
+        return $this->reject;
+    }
 }

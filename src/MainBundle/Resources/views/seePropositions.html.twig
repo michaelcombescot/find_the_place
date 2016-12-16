@@ -2,26 +2,41 @@
 
 {% block body %}
 
-{% include 'MainBundle::header.html.twig' %}
+	{% include 'MainBundle::header.html.twig' %}
 
-{% for medium in media %}
-		<div>
-			<img src="{{ asset(medium.path) }}" alt="challenge">
-			<p>proposed by {{ medium.user.username }}</p>
-			<a href="{{ path('main_see_propositions_valid', {'id': medium.id}) }}">
-				<button>
-					That's it !
-				</button>
-			</a>
-			<a href="{{ path('main_see_propositions_false', {'id': medium.id}) }}">
-				<button>
-					Nop, you're wrong kiddo
-				</button>
-			</a>
-		</div>
+		<a href="{{ path('main_homepage') }}">Return to homepage</a>
+
+		{% if nothing %}
+
+			<p>Nothing has been submitted presently</p>
 		
-	{% endfor %}
+		{% else %}
 
-<a href="{{ path('main_homepage') }}">Return to homepage</a>
+			<div id="propositionsWrapper">
+
+				{% for medium in media %}
+
+					<div id="propositions">
+						<img src="{{ asset(medium.path) }}" alt="challenge">
+						<p>proposed by {{ medium.user.username }}</p>
+						<a href="{{ path('main_see_propositions_valid', {'id': medium.id}) }}">
+							<button>
+								That's it !
+							</button>
+						</a>
+						<a href="{{ path('main_see_propositions_false', {'id': medium.id}) }}">
+							<button>
+								Nop, you're wrong kiddo
+							</button>
+						</a>
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+		{% endif %}
+
+	</div>
 
 {% endblock %}

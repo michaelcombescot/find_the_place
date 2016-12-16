@@ -2,14 +2,26 @@
 
 {% block body %}
 
-{% include 'MainBundle::header.html.twig' %}
+	{% include 'MainBundle::header.html.twig' %}
 
-<div>
-	<p>Hey man I know this place and i can prove it !</p>
-	{{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-</div>
+	<a href="{{ path('main_homepage') }}">
+		Return to homepage
+	</a>
+	<div id="guessWrapper">
+		<div id="guess">
+			<p>Hey man I know this place and i can prove it !</p>
+			{{ form_start(form) }}
+                    {{ form_widget(form.file) }}
+                    <img id="newUpload" src="#" alt="Your file preview"/>
+                {{ form_widget(form) }}
+                <input type="submit" value="Create" />
+            {{ form_end(form) }}
+		</div>
+	</div>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/main/scripts/displayUploadedImage.js') }}"></script>
 {% endblock %}

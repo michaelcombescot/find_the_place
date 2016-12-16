@@ -1,0 +1,14 @@
+body
+{
+	margin:0;
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+}
+
+@import 'header';
+@import 'index';
+@import 'homepage';
+@import 'guess';
+@import 'seePropositions';
+@import 'newMedium';
+@import 'editMedium';

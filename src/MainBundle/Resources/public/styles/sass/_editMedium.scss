@@ -1,0 +1,29 @@
+#editWrapper
+{
+	height: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: cover;
+
+	#editMedium
+	{
+		background-color: #e6e6e6;
+		padding: 10px;
+		text-align:center;
+	}
+	
+	form
+	{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 10px;
+
+		#newUpload
+		{
+			max-width: 200px;
+		}
+	}
+
+}

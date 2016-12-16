@@ -13,6 +13,12 @@ class Medium
     {
         return strval($this->id);
     }
+
+    /**
+     * @var string
+     */
+    public $file;
+
 /*
 * Generated code
 */

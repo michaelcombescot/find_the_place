@@ -1,0 +1,159 @@
+/* line 1, ../sass/main.scss */
+body {
+  margin: 0;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+}
+
+/* line 1, ../sass/_header.scss */
+#login {
+  background-color: black;
+  padding: 10px;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+/* line 1, ../sass/_index.scss */
+#registerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: cover;
+}
+/* line 8, ../sass/_index.scss */
+#registerWrapper #register {
+  background-color: #e6e6e6;
+  padding: 10px;
+}
+
+/* line 1, ../sass/_homepage.scss */
+#homepageWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+/* line 8, ../sass/_homepage.scss */
+#homepageWrapper #currentChallenge {
+  text-align: center;
+  background-color: #e6e6e6;
+  padding: 10px;
+  max-width: 400px;
+}
+/* line 15, ../sass/_homepage.scss */
+#homepageWrapper #currentChallenge img {
+  max-width: 400px;
+}
+/* line 21, ../sass/_homepage.scss */
+#homepageWrapper #myProposition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e6e6e6;
+  padding: 10px;
+  max-width: 400px;
+  margin: 10px;
+}
+/* line 31, ../sass/_homepage.scss */
+#homepageWrapper #myProposition img {
+  max-width: 400px;
+}
+
+/* line 1, ../sass/_guess.scss */
+#guessWrapper {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: cover;
+}
+/* line 9, ../sass/_guess.scss */
+#guessWrapper #guess {
+  background-color: #e6e6e6;
+  padding: 10px;
+  text-align: center;
+}
+/* line 16, ../sass/_guess.scss */
+#guessWrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+/* line 23, ../sass/_guess.scss */
+#guessWrapper form #newUpload {
+  max-width: 200px;
+}
+
+/* line 1, ../sass/_seePropositions.scss */
+#propositionsWrapper {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+/* line 7, ../sass/_seePropositions.scss */
+#propositionsWrapper #propositions {
+  text-align: center;
+  background-color: #e6e6e6;
+  padding: 10px;
+  max-width: 250px;
+  margin: 10px;
+}
+/* line 15, ../sass/_seePropositions.scss */
+#propositionsWrapper #propositions img {
+  max-width: 200px;
+}
+
+/* line 1, ../sass/_newMedium.scss */
+#newWrapper {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: cover;
+}
+/* line 9, ../sass/_newMedium.scss */
+#newWrapper #newMedium {
+  background-color: #e6e6e6;
+  padding: 10px;
+  text-align: center;
+}
+/* line 16, ../sass/_newMedium.scss */
+#newWrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+/* line 23, ../sass/_newMedium.scss */
+#newWrapper form #newUpload {
+  max-width: 200px;
+}
+
+/* line 1, ../sass/_editMedium.scss */
+#editWrapper {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: cover;
+}
+/* line 9, ../sass/_editMedium.scss */
+#editWrapper #editMedium {
+  background-color: #e6e6e6;
+  padding: 10px;
+  text-align: center;
+}
+/* line 16, ../sass/_editMedium.scss */
+#editWrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+/* line 23, ../sass/_editMedium.scss */
+#editWrapper form #newUpload {
+  max-width: 200px;
+}

@@ -4,38 +4,87 @@
 
 	{% include 'MainBundle::header.html.twig' %}
 
-	<div id="currentChallenge">
-		<p>Here is the challenge !!</p>
-		<div>
-			<img src="{{ asset(leader.medium.path) }}" alt="challenge">
-		</div>
-		<p>Challenge from {{ leader.username }}</p>
-	</div>
-	{% if isLeader == false %}
-		{% if user.medium == null %}
-			<a href="{{ path('main_guess') }}">
-				<button>
-					I got an idea !
-				</button>
-			</a>
-		{% else %}
-			<div id="myProposition">
-				<img src="{{ asset(user.medium.path) }}" alt="My proposition">
-				<a href="{{ path('medium_edit', {'id': user.medium.id }) }}">
-					<button>
-						change my image
-					</button>
-				</a>
-			</div>
-		{% endif %}
-	{% endif %}
+	<div id="homepageWrapper">
 
-	{% if isLeader %}
-		<a href="{{ path('main_see_propositions') }}">
-			<button>
-				See the propositions
-			</button>
-		</a>
-	{% endif %}
+		{% if leader.medium == null %}
+		
+			{% if isLeader %}
+
+				<div id="currentChallenge">
+					<p>Time to begin the next match, quick share a picture with your friends !</p>
+					<a href="{{ path('medium_new') }}">
+						<button>
+							Next challenge will be...
+						</button>
+					</a>
+				</div>
+			
+			{% else %}
+
+				<div id="currentChallenge">
+					<p>No challenge presently, the new lead is {{ leader.username }}. Now you know who to blame.</p>
+				</div>
+
+			{% endif %}
+		{% else %}
+
+			<div id="currentChallenge">
+				<p>Here is the challenge !!</p>
+				<div>
+					<img src="{{ asset(leader.medium.path) }}" alt="challenge">
+				</div>
+				<p>Challenge from {{ leader.username }}</p>
+			</div>
+
+			{% if isLeader == false %}
+
+				{% if user.medium == null %}
+
+					{% if user.reject == true %}
+
+						<div id="myProposition">
+							<p>Your last try has been rejected, play again !</p>
+						</div>
+
+					{% endif %}
+
+					<div id="myProposition">
+						<a href="{{ path('main_guess') }}">
+							<button>
+								I got an idea !
+							</button>
+						</a>
+					</div>
+
+				{% else %}
+
+					<div id="myProposition">
+						<p>My current proposition</p>
+						<img src="{{ asset(user.medium.path) }}" alt="My proposition">
+						<a href="{{ path('medium_edit', {'id': user.medium.id }) }}">
+							<button>
+								change my image
+							</button>
+						</a>
+					</div>
+
+				{% endif %}
+
+			{% else %}
+
+				<div id="myProposition">
+					<p>You are the current lead, you can't post new stuff, but you can judge others, and it' pretty cool.</p>
+					<a href="{{ path('main_see_propositions') }}">
+						<button>
+							See the propositions
+						</button>
+					</a>
+				</div>
+
+			{% endif %}
+
+		{% endif %}
+
+	</div>
 
 {% endblock %}

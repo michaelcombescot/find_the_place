@@ -1,16 +1,28 @@
-{% extends 'base.html.twig' %}
+{% extends '@Main/base.html.twig' %}
 
 {% block body %}
-    <h1>Medium creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    {% include 'MainBundle::header.html.twig' %}
 
-    <ul>
-        <li>
-            <a href="{{ path('medium_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <a href="{{ path('main_homepage') }}">
+        I tought I had a good idea, but meh. <br> Take me to the homepage
+    </a>
+
+    <div id="newWrapper">
+        <div id="newMedium">
+            <h1>Creating the new chalenge</h1>
+
+            {{ form_start(form) }}
+                    {{ form_widget(form.file) }}
+                    <img id="newUpload" src="#" alt="Your file preview"/>
+                {{ form_widget(form) }}
+                <input type="submit" value="Create" />
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/main/scripts/displayUploadedImage.js') }}"></script>
 {% endblock %}
